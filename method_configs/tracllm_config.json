@@ -1,0 +1,8 @@
+{
+    "method_name": "tracllm",
+    "description": "TracLLM attribution method using perturbation-based scoring functions",
+    "score_funcs": ["stc", "loo", "denoised_shapley"],
+    "sh_N": 20,
+    "beta": 0.2,
+    "w": 2
+} 

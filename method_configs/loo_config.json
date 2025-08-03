@@ -1,0 +1,5 @@
+{
+    "method_name": "loo",
+    "description": "Vanilla perturbation-based attribution method",
+    "score_funcs": ["loo"]
+} 
