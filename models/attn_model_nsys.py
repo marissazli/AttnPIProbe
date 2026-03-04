@@ -34,8 +34,16 @@ class AttentionModelNoSys(Model):
         attention_map = attention_maps[0]
         return len(attention_map), attention_map[0].shape[1]
 
-    def inference(self, instruction, data, max_output_tokens=None):
-        data = "Data: " + data
+    def inference(self, instruction, data, external_context=None, max_output_tokens=None):
+        data_payload = data
+        if external_context:
+            data_payload = (
+                f"{data}\n\n"
+                "External context:\n"
+                f"{external_context}"
+            )
+
+        data = "Data: " + data_payload
         messages = [
             {"role": "user", "content": instruction + "\n" + data},
         ]
@@ -47,7 +55,7 @@ class AttentionModelNoSys(Model):
         )
 
         instruction_len = len(self.tokenizer.encode(instruction))
-        data_len = len(self.tokenizer.encode(data))
+        data_len = len(self.tokenizer.encode(data_payload))
 
         model_inputs = self.tokenizer(
             [text], return_tensors="pt").to(self.model.device)
