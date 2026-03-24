@@ -2,6 +2,7 @@ import argparse
 import os
 import json
 import random
+import math
 import torch
 import numpy as np
 from tqdm import tqdm
@@ -111,6 +112,122 @@ def _safe_mean(values):
     return float(np.mean(values)) if values else 0.0
 
 
+def _safe_std(values):
+    return float(np.std(values)) if values else 0.0
+
+
+def _compute_condition_stats(values):
+    if not values:
+        return {"mean": 0.0, "std": 0.0, "min": 0.0, "max": 0.0}
+    return {
+        "mean": round(float(np.mean(values)), 6),
+        "std": round(float(np.std(values)), 6),
+        "min": round(float(np.min(values)), 6),
+        "max": round(float(np.max(values)), 6),
+    }
+
+
+def _build_threshold_grid(min_v, max_v, step_v):
+    if step_v <= 0:
+        raise ValueError("--threshold_sweep_step must be > 0")
+    if max_v < min_v:
+        raise ValueError("--threshold_sweep_max must be >= --threshold_sweep_min")
+
+    n_steps = int(math.floor((max_v - min_v) / step_v)) + 1
+    grid = [round(min_v + i * step_v, 6) for i in range(n_steps)]
+    if grid[-1] < round(max_v, 6):
+        grid.append(round(max_v, 6))
+    return grid
+
+
+def _compute_threshold_sweep(benign_scores, adversarial_scores, thresholds):
+    rows = []
+    best = {
+        "threshold": None,
+        "youden_j": float("-inf"),
+        "balanced_accuracy": float("-inf"),
+        "tpr": 0.0,
+        "fpr": 0.0,
+    }
+    benign_n = max(1, len(benign_scores))
+    adv_n = max(1, len(adversarial_scores))
+
+    for t in thresholds:
+        fp = sum(1 for s in benign_scores if s <= t)
+        tp = sum(1 for s in adversarial_scores if s <= t)
+        fpr = fp / benign_n
+        tpr = tp / adv_n
+        youden_j = tpr - fpr
+        bal_acc = 0.5 * (tpr + (1.0 - fpr))
+        row = {
+            "threshold": round(float(t), 6),
+            "tpr": round(float(tpr), 6),
+            "fpr": round(float(fpr), 6),
+            "youden_j": round(float(youden_j), 6),
+            "balanced_accuracy": round(float(bal_acc), 6),
+        }
+        rows.append(row)
+        if (youden_j > best["youden_j"]) or (
+            youden_j == best["youden_j"] and bal_acc > best["balanced_accuracy"]
+        ):
+            best = {
+                "threshold": row["threshold"],
+                "youden_j": youden_j,
+                "balanced_accuracy": bal_acc,
+                "tpr": tpr,
+                "fpr": fpr,
+            }
+
+    return {
+        "rows": rows,
+        "best_by_youden": {
+            "threshold": round(float(best["threshold"]), 6)
+            if best["threshold"] is not None
+            else None,
+            "youden_j": round(float(best["youden_j"]), 6)
+            if best["threshold"] is not None
+            else 0.0,
+            "balanced_accuracy": round(float(best["balanced_accuracy"]), 6)
+            if best["threshold"] is not None
+            else 0.0,
+            "tpr": round(float(best["tpr"]), 6),
+            "fpr": round(float(best["fpr"]), 6),
+        },
+    }
+
+
+def _aggregate_group_stats(logs, group_key):
+    groups = {}
+    for row in logs:
+        key = row.get(group_key, "") or "unknown"
+        if key not in groups:
+            groups[key] = {
+                "normal_noext": [],
+                "adversarial_noext": [],
+                "normal_ext": [],
+                "adversarial_ext": [],
+            }
+        fs = row["focus_scores"]
+        for cond in groups[key]:
+            groups[key][cond].append(fs[cond])
+
+    out = {}
+    for key, vals in groups.items():
+        out[key] = {
+            "count": len(vals["normal_noext"]),
+            "mean_focus_scores": {
+                cond: round(_safe_mean(cond_vals), 6) for cond, cond_vals in vals.items()
+            },
+            "separation_noext_adv_minus_normal": round(
+                _safe_mean(vals["adversarial_noext"]) - _safe_mean(vals["normal_noext"]), 6
+            ),
+            "separation_ext_adv_minus_normal": round(
+                _safe_mean(vals["adversarial_ext"]) - _safe_mean(vals["normal_ext"]), 6
+            ),
+        }
+    return out
+
+
 def run_retrieval_compare_eval(args, model, detector):
     if not args.local_query_path or not args.local_corpus_path:
         raise ValueError(
@@ -177,6 +294,10 @@ def run_retrieval_compare_eval(args, model, detector):
             {
                 "id": sample["id"],
                 "label": sample["label"],
+                "source_prompt_id": sample.get("source_prompt_id", ""),
+                "variant_index": sample.get("variant_index", 0),
+                "attack_type": sample.get("attack_type", ""),
+                "motivation": sample.get("motivation", ""),
                 "normal_prompt": normal_prompt,
                 "adversarial_prompt": adversarial_prompt,
                 "retrieval": {
@@ -196,6 +317,9 @@ def run_retrieval_compare_eval(args, model, detector):
         "threshold": detector.threshold,
         "mean_focus_scores": {k: round(_safe_mean(v), 6) for k, v in cond_scores.items()},
         "detection_rates": {k: round(_safe_mean(v), 6) for k, v in cond_detects.items()},
+        "condition_stats": {
+            k: _compute_condition_stats(v) for k, v in cond_scores.items()
+        },
     }
     summary["deltas"] = {
         "normal_ext_minus_normal_noext": round(
@@ -218,6 +342,33 @@ def run_retrieval_compare_eval(args, model, detector):
             - summary["mean_focus_scores"]["normal_ext"],
             6,
         ),
+    }
+    thresholds = _build_threshold_grid(
+        min_v=args.threshold_sweep_min,
+        max_v=args.threshold_sweep_max,
+        step_v=args.threshold_sweep_step,
+    )
+    summary["threshold_sweep"] = {
+        "config": {
+            "min": round(float(args.threshold_sweep_min), 6),
+            "max": round(float(args.threshold_sweep_max), 6),
+            "step": round(float(args.threshold_sweep_step), 6),
+            "num_thresholds": len(thresholds),
+        },
+        "noext": _compute_threshold_sweep(
+            benign_scores=cond_scores["normal_noext"],
+            adversarial_scores=cond_scores["adversarial_noext"],
+            thresholds=thresholds,
+        ),
+        "ext": _compute_threshold_sweep(
+            benign_scores=cond_scores["normal_ext"],
+            adversarial_scores=cond_scores["adversarial_ext"],
+            thresholds=thresholds,
+        ),
+    }
+    summary["grouped_analysis"] = {
+        "by_attack_type": _aggregate_group_stats(logs, "attack_type"),
+        "by_source_prompt_id": _aggregate_group_stats(logs, "source_prompt_id"),
     }
 
     output_dir = os.path.join("result", args.output_subdir)
@@ -313,6 +464,24 @@ if __name__ == "__main__":
         type=str,
         default=None,
         help="Subdirectory under ./result/ for retrieval_compare outputs.",
+    )
+    parser.add_argument(
+        "--threshold_sweep_min",
+        type=float,
+        default=0.0,
+        help="Minimum threshold value for retrieval_compare threshold sweep.",
+    )
+    parser.add_argument(
+        "--threshold_sweep_max",
+        type=float,
+        default=1.0,
+        help="Maximum threshold value for retrieval_compare threshold sweep.",
+    )
+    parser.add_argument(
+        "--threshold_sweep_step",
+        type=float,
+        default=0.05,
+        help="Threshold step size for retrieval_compare threshold sweep.",
     )
 
     args = parser.parse_args()

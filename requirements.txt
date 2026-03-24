@@ -5,3 +5,5 @@ transformers
 datasets
 scikit-learn
 accelerate
+matplotlib
+tqdm

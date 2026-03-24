@@ -13,6 +13,9 @@ if __name__ == "__main__":
     parser.add_argument("--retrieval_top_k", type=int, default=3)
     parser.add_argument("--max_samples", type=int, default=0)
     parser.add_argument("--output_subdir", type=str, default="retrieval_compare")
+    parser.add_argument("--threshold_sweep_min", type=float, default=0.0)
+    parser.add_argument("--threshold_sweep_max", type=float, default=1.0)
+    parser.add_argument("--threshold_sweep_step", type=float, default=0.05)
     parser.add_argument(
         "--default_adversarial_suffix",
         type=str,

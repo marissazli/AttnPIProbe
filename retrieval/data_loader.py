@@ -52,6 +52,12 @@ def load_local_queries(path):
                 "text": str(record["text"]),
                 "label": int(record["label"]),
                 "adversarial_text": str(record.get("adversarial_text", "")),
+                "source_prompt_id": str(record.get("source_prompt_id", "")),
+                "variant_index": int(record.get("variant_index", 0))
+                if str(record.get("variant_index", "")).strip()
+                else 0,
+                "attack_type": str(record.get("attack_type", "")),
+                "motivation": str(record.get("motivation", "")),
             }
         )
     return normalized
