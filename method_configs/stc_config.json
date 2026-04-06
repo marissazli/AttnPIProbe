@@ -1,0 +1,5 @@
+{
+    "method_name": "stc",
+    "description": "Vanilla perturbation-based attribution method",
+    "score_funcs": ["stc"]
+} 

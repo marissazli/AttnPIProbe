@@ -1,0 +1,5 @@
+{
+    "method_name": "self_citation",
+    "description": "Self-citation attribution method",
+    "self_citation_model": "self"
+} 

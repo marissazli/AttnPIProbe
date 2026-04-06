@@ -1,0 +1,7 @@
+{
+    "method_name": "attntrace",
+    "description": "attnTrace attribution method",
+    "avg_k": 5,
+    "q": 0.4,
+    "B": 30
+} 
