@@ -1,0 +1,37 @@
+/u/marissa/attentionPI/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:51: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/u/marissa/attentionPI/.venv/lib/python3.10/site-packages/google/api_core/_python_version_support.py:273: FutureWarning: You are using a Python version (3.10.12) which Google will stop supporting in new releases of google.api_core once it reaches its end of life (2026-10-04). Please upgrade to the latest Python version, or at least Python 3.11, to continue receiving updates for google.api_core past that date.
+  warnings.warn(message, FutureWarning)
+/u/marissa/attentionPI/src/models/Gemini.py:5: FutureWarning: 
+
+All support for the `google.generativeai` package has ended. It will no longer be receiving 
+updates or bug fixes. Please switch to the `google.genai` package as soon as possible.
+See README for more details:
+
+https://github.com/google-gemini/deprecated-generative-ai-python/blob/main/README.md
+
+  import google.generativeai as genai
+/u/marissa/attentionPI/.venv/lib/python3.10/site-packages/transformers/models/auto/tokenization_auto.py:823: FutureWarning: The `use_auth_token` argument is deprecated and will be removed in v5 of Transformers. Please use `token` instead.
+  warnings.warn(
+/u/marissa/attentionPI/.venv/lib/python3.10/site-packages/transformers/models/auto/auto_factory.py:471: FutureWarning: The `use_auth_token` argument is deprecated and will be removed in v5 of Transformers. Please use `token` instead.
+  warnings.warn(
+Loading qwen2.5-7b on GPU 0...
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:01<00:04,  1.47s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:02<00:02,  1.42s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:04<00:01,  1.42s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:05<00:00,  1.37s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:05<00:00,  1.39s/it]
+Extracting hidden states (layer_stride=4)...
+Extracting hidden states:   0%|          | 0/64 [00:00<?, ?it/s]Extracting hidden states:   2%|▏         | 1/64 [00:00<00:34,  1.83it/s]Extracting hidden states:   3%|▎         | 2/64 [00:00<00:18,  3.43it/s]Extracting hidden states:   6%|▋         | 4/64 [00:00<00:09,  6.26it/s]Extracting hidden states:   9%|▉         | 6/64 [00:00<00:07,  7.97it/s]Extracting hidden states:  12%|█▎        | 8/64 [00:01<00:05,  9.96it/s]Extracting hidden states:  16%|█▌        | 10/64 [00:01<00:05, 10.55it/s]Extracting hidden states:  19%|█▉        | 12/64 [00:01<00:04, 10.97it/s]Extracting hidden states:  22%|██▏       | 14/64 [00:01<00:04, 11.57it/s]Extracting hidden states:  25%|██▌       | 16/64 [00:01<00:04, 11.80it/s]Extracting hidden states:  28%|██▊       | 18/64 [00:01<00:03, 12.02it/s]Extracting hidden states:  31%|███▏      | 20/64 [00:02<00:03, 12.22it/s]Extracting hidden states:  34%|███▍      | 22/64 [00:02<00:03, 12.41it/s]Extracting hidden states:  38%|███▊      | 24/64 [00:02<00:03, 12.74it/s]Extracting hidden states:  41%|████      | 26/64 [00:02<00:02, 12.67it/s]Extracting hidden states:  44%|████▍     | 28/64 [00:02<00:02, 12.46it/s]Extracting hidden states:  47%|████▋     | 30/64 [00:02<00:02, 12.53it/s]Extracting hidden states:  50%|█████     | 32/64 [00:03<00:02, 12.58it/s]Extracting hidden states:  53%|█████▎    | 34/64 [00:03<00:02, 12.94it/s]Extracting hidden states:  56%|█████▋    | 36/64 [00:03<00:02, 12.78it/s]Extracting hidden states:  59%|█████▉    | 38/64 [00:03<00:02, 12.66it/s]Extracting hidden states:  62%|██████▎   | 40/64 [00:03<00:01, 12.65it/s]Extracting hidden states:  66%|██████▌   | 42/64 [00:03<00:01, 12.74it/s]Extracting hidden states:  69%|██████▉   | 44/64 [00:03<00:01, 13.31it/s]Extracting hidden states:  72%|███████▏  | 46/64 [00:04<00:01, 12.92it/s]Extracting hidden states:  75%|███████▌  | 48/64 [00:04<00:01, 12.65it/s]Extracting hidden states:  78%|███████▊  | 50/64 [00:04<00:01, 12.84it/s]Extracting hidden states:  81%|████████▏ | 52/64 [00:04<00:00, 12.41it/s]Extracting hidden states:  84%|████████▍ | 54/64 [00:04<00:00, 12.47it/s]Extracting hidden states:  88%|████████▊ | 56/64 [00:04<00:00, 12.51it/s]Extracting hidden states:  91%|█████████ | 58/64 [00:05<00:00, 12.66it/s]Extracting hidden states:  94%|█████████▍| 60/64 [00:05<00:00, 12.53it/s]Extracting hidden states:  97%|█████████▋| 62/64 [00:05<00:00, 12.39it/s]Extracting hidden states: 100%|██████████| 64/64 [00:05<00:00, 11.79it/s]Extracting hidden states: 100%|██████████| 64/64 [00:05<00:00, 11.43it/s]
+Saved representations: ./phase2_results/representations_qwen2.5-7b.npz
+  Shape: (64, 8, 3584)  (N=64, layers=8, dim=3584)
+
+Generating Figure 1 (PCA per attack type)...
+Saved: ./phase2_results/fig1_pca_per_type_qwen2.5-7b.png
+  Best layer: 4, linear separability: 100.0%
+
+Generating layer emergence plot...
+Saved: ./phase2_results/fig_layer_emergence_qwen2.5-7b.png
+
+Generating Figure 3 (cross-type analysis)...
+Saved: ./phase2_results/fig3_cross_type_qwen2.5-7b.png
+
+Summary saved: ./phase2_results/summary_qwen2.5-7b.json
+
+All outputs in: ./phase2_results/

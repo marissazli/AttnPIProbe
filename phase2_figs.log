@@ -1,0 +1,41 @@
+/u/marissa/attentionPI/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:51: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/u/marissa/attentionPI/.venv/lib/python3.10/site-packages/google/api_core/_python_version_support.py:273: FutureWarning: You are using a Python version (3.10.12) which Google will stop supporting in new releases of google.api_core once it reaches its end of life (2026-10-04). Please upgrade to the latest Python version, or at least Python 3.11, to continue receiving updates for google.api_core past that date.
+  warnings.warn(message, FutureWarning)
+/u/marissa/attentionPI/src/models/Gemini.py:5: FutureWarning: 
+
+All support for the `google.generativeai` package has ended. It will no longer be receiving 
+updates or bug fixes. Please switch to the `google.genai` package as soon as possible.
+See README for more details:
+
+https://github.com/google-gemini/deprecated-generative-ai-python/blob/main/README.md
+
+  import google.generativeai as genai
+/u/marissa/attentionPI/.venv/lib/python3.10/site-packages/transformers/models/auto/tokenization_auto.py:823: FutureWarning: The `use_auth_token` argument is deprecated and will be removed in v5 of Transformers. Please use `token` instead.
+  warnings.warn(
+/u/marissa/attentionPI/.venv/lib/python3.10/site-packages/transformers/models/auto/auto_factory.py:471: FutureWarning: The `use_auth_token` argument is deprecated and will be removed in v5 of Transformers. Please use `token` instead.
+  warnings.warn(
+Loading qwen2.5-7b on GPU 0...
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:01<00:04,  1.47s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:02<00:02,  1.48s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:04<00:01,  1.44s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:05<00:00,  1.40s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:05<00:00,  1.42s/it]
+Loading cached representations from ./phase2_results/representations_qwen2.5-7b.npz
+
+Generating Figure 1 (PCA per attack type)...
+Saved: ./phase2_results/fig1_pca_per_type_qwen2.5-7b.png
+  Best layer: 4, linear separability: 100.0%
+
+Generating layer emergence plot...
+Saved: ./phase2_results/fig_layer_emergence_qwen2.5-7b.png
+
+Generating Figure 3 (cross-type analysis)...
+Saved: ./phase2_results/fig3_cross_type_qwen2.5-7b.png
+
+Generating clarity figure: global separation with decision boundary...
+Saved: ./phase2_results/fig_separation_boundary_qwen2.5-7b.png
+Generating clarity figure: PC1 histogram...
+Saved: ./phase2_results/fig_pc1_histogram_qwen2.5-7b.png
+Generating clarity figure: Figure 1 with decision boundaries...
+Saved: ./phase2_results/fig1_boundaries_qwen2.5-7b.png
+
+Summary saved: ./phase2_results/summary_qwen2.5-7b.json
+
+All outputs in: ./phase2_results/
