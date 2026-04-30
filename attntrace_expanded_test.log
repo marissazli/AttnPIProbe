@@ -1,0 +1,87 @@
+/u/marissa/attentionPI/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:58: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/u/marissa/attentionPI/.venv/lib/python3.10/site-packages/google/api_core/_python_version_support.py:273: FutureWarning: You are using a Python version (3.10.12) which Google will stop supporting in new releases of google.api_core once it reaches its end of life (2026-10-04). Please upgrade to the latest Python version, or at least Python 3.11, to continue receiving updates for google.api_core past that date.
+  warnings.warn(message, FutureWarning)
+/u/marissa/attentionPI/src/models/Gemini.py:5: FutureWarning: 
+
+All support for the `google.generativeai` package has ended. It will no longer be receiving 
+updates or bug fixes. Please switch to the `google.genai` package as soon as possible.
+See README for more details:
+
+https://github.com/google-gemini/deprecated-generative-ai-python/blob/main/README.md
+
+  import google.generativeai as genai
+/u/marissa/attentionPI/.venv/lib/python3.10/site-packages/transformers/models/auto/tokenization_auto.py:786: FutureWarning: The `use_auth_token` argument is deprecated and will be removed in v5 of Transformers. Please use `token` instead.
+  warnings.warn(
+/u/marissa/attentionPI/.venv/lib/python3.10/site-packages/transformers/models/auto/auto_factory.py:469: FutureWarning: The `use_auth_token` argument is deprecated and will be removed in v5 of Transformers. Please use `token` instead.
+  warnings.warn(
+Loading model: qwen2.5-7b on GPU 1
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:02<00:06,  2.03s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:03<00:03,  1.80s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:05<00:01,  1.71s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:06<00:00,  1.64s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:06<00:00,  1.70s/it]
+Initializing AttnTrace (explanation_level=segment, K=3, q=0.4, B=30)
+Loading expanded dataset from ./variations/variants_master.json...
+Loaded 50 malicious scenarios
+
+Running format: observations_only
+observations_only:   0%|          | 0/50 [00:00<?, ?it/s]We detected that you are passing `past_key_values` as a tuple and this is deprecated and will be removed in v4.43. Please use an appropriate `Cache` class (https://huggingface.co/docs/transformers/v4.41.3/en/internal/generation_utils#transformers.Cache)
+observations_only:   2%|▏         | 1/50 [00:02<01:56,  2.37s/it]observations_only:   4%|▍         | 2/50 [00:03<01:30,  1.89s/it]observations_only:   6%|▌         | 3/50 [00:05<01:20,  1.72s/it]observations_only:   8%|▊         | 4/50 [00:06<01:15,  1.64s/it]observations_only:  10%|█         | 5/50 [00:08<01:15,  1.69s/it]observations_only:  12%|█▏        | 6/50 [00:10<01:11,  1.64s/it]observations_only:  14%|█▍        | 7/50 [00:12<01:13,  1.71s/it]observations_only:  16%|█▌        | 8/50 [00:13<01:10,  1.68s/it]observations_only:  18%|█▊        | 9/50 [00:15<01:06,  1.63s/it]observations_only:  20%|██        | 10/50 [00:16<01:06,  1.65s/it]observations_only:  22%|██▏       | 11/50 [00:18<01:04,  1.64s/it]observations_only:  24%|██▍       | 12/50 [00:20<01:00,  1.60s/it]observations_only:  26%|██▌       | 13/50 [00:21<00:58,  1.58s/it]observations_only:  28%|██▊       | 14/50 [00:23<00:56,  1.56s/it]observations_only:  30%|███       | 15/50 [00:24<00:54,  1.54s/it]observations_only:  32%|███▏      | 16/50 [00:26<00:52,  1.56s/it]observations_only:  34%|███▍      | 17/50 [00:27<00:50,  1.54s/it]observations_only:  36%|███▌      | 18/50 [00:29<00:51,  1.60s/it]observations_only:  38%|███▊      | 19/50 [00:30<00:48,  1.57s/it]observations_only:  40%|████      | 20/50 [00:32<00:46,  1.55s/it]observations_only:  42%|████▏     | 21/50 [00:34<00:44,  1.54s/it]observations_only:  44%|████▍     | 22/50 [00:35<00:43,  1.54s/it]observations_only:  46%|████▌     | 23/50 [00:37<00:41,  1.53s/it]observations_only:  48%|████▊     | 24/50 [00:38<00:39,  1.53s/it]observations_only:  50%|█████     | 25/50 [00:40<00:39,  1.59s/it]observations_only:  52%|█████▏    | 26/50 [00:41<00:37,  1.58s/it]observations_only:  54%|█████▍    | 27/50 [00:43<00:35,  1.56s/it]observations_only:  56%|█████▌    | 28/50 [00:44<00:34,  1.57s/it]observations_only:  58%|█████▊    | 29/50 [00:46<00:32,  1.55s/it]observations_only:  60%|██████    | 30/50 [00:48<00:32,  1.61s/it]observations_only:  62%|██████▏   | 31/50 [00:49<00:30,  1.58s/it]observations_only:  64%|██████▍   | 32/50 [00:51<00:28,  1.58s/it]observations_only:  66%|██████▌   | 33/50 [00:52<00:26,  1.56s/it]observations_only:  68%|██████▊   | 34/50 [00:54<00:25,  1.58s/it]observations_only:  70%|███████   | 35/50 [00:55<00:23,  1.56s/it]observations_only:  72%|███████▏  | 36/50 [00:57<00:22,  1.62s/it]observations_only:  74%|███████▍  | 37/50 [00:59<00:21,  1.67s/it]observations_only:  76%|███████▌  | 38/50 [01:01<00:19,  1.62s/it]observations_only:  78%|███████▊  | 39/50 [01:02<00:17,  1.59s/it]observations_only:  80%|████████  | 40/50 [01:04<00:15,  1.56s/it]observations_only:  82%|████████▏ | 41/50 [01:05<00:13,  1.54s/it]observations_only:  84%|████████▍ | 42/50 [01:07<00:12,  1.53s/it]observations_only:  86%|████████▌ | 43/50 [01:08<00:10,  1.53s/it]observations_only:  88%|████████▊ | 44/50 [01:10<00:09,  1.57s/it]observations_only:  90%|█████████ | 45/50 [01:12<00:08,  1.67s/it]observations_only:  92%|█████████▏| 46/50 [01:13<00:06,  1.67s/it]observations_only:  94%|█████████▍| 47/50 [01:15<00:05,  1.77s/it]observations_only:  96%|█████████▌| 48/50 [01:17<00:03,  1.81s/it]observations_only:  98%|█████████▊| 49/50 [01:19<00:01,  1.83s/it]observations_only: 100%|██████████| 50/50 [01:21<00:00,  1.85s/it]                                                                  
+Running format: labeled_segments
+labeled_segments:   0%|          | 0/50 [00:00<?, ?it/s]labeled_segments:   2%|▏         | 1/50 [00:01<01:33,  1.90s/it]labeled_segments:   4%|▍         | 2/50 [00:03<01:31,  1.90s/it]labeled_segments:   6%|▌         | 3/50 [00:05<01:28,  1.89s/it]labeled_segments:   8%|▊         | 4/50 [00:07<01:24,  1.84s/it]labeled_segments:  10%|█         | 5/50 [00:09<01:22,  1.83s/it]labeled_segments:  12%|█▏        | 6/50 [00:10<01:17,  1.75s/it]labeled_segments:  14%|█▍        | 7/50 [00:12<01:19,  1.85s/it]labeled_segments:  16%|█▌        | 8/50 [00:14<01:18,  1.87s/it]labeled_segments:  18%|█▊        | 9/50 [00:16<01:16,  1.87s/it]labeled_segments:  20%|██        | 10/50 [00:18<01:16,  1.92s/it]labeled_segments:  22%|██▏       | 11/50 [00:20<01:14,  1.92s/it]labeled_segments:  24%|██▍       | 12/50 [00:22<01:12,  1.91s/it]labeled_segments:  26%|██▌       | 13/50 [00:24<01:10,  1.90s/it]labeled_segments:  28%|██▊       | 14/50 [00:26<01:08,  1.89s/it]labeled_segments:  30%|███       | 15/50 [00:28<01:06,  1.89s/it]labeled_segments:  32%|███▏      | 16/50 [00:29<01:03,  1.86s/it]labeled_segments:  34%|███▍      | 17/50 [00:31<00:57,  1.76s/it]labeled_segments:  36%|███▌      | 18/50 [00:33<00:56,  1.77s/it]labeled_segments:  38%|███▊      | 19/50 [00:35<00:55,  1.80s/it]labeled_segments:  40%|████      | 20/50 [00:37<00:54,  1.82s/it]labeled_segments:  42%|████▏     | 21/50 [00:38<00:53,  1.84s/it]labeled_segments:  44%|████▍     | 22/50 [00:40<00:52,  1.86s/it]labeled_segments:  46%|████▌     | 23/50 [00:42<00:50,  1.87s/it]labeled_segments:  48%|████▊     | 24/50 [00:44<00:48,  1.88s/it]labeled_segments:  50%|█████     | 25/50 [00:46<00:48,  1.95s/it]labeled_segments:  52%|█████▏    | 26/50 [00:48<00:46,  1.93s/it]labeled_segments:  54%|█████▍    | 27/50 [00:50<00:44,  1.92s/it]labeled_segments:  56%|█████▌    | 28/50 [00:52<00:42,  1.94s/it]labeled_segments:  58%|█████▊    | 29/50 [00:54<00:40,  1.92s/it]labeled_segments:  60%|██████    | 30/50 [00:56<00:38,  1.91s/it]labeled_segments:  62%|██████▏   | 31/50 [00:58<00:36,  1.91s/it]labeled_segments:  64%|██████▍   | 32/50 [01:00<00:34,  1.91s/it]labeled_segments:  66%|██████▌   | 33/50 [01:01<00:32,  1.90s/it]labeled_segments:  68%|██████▊   | 34/50 [01:03<00:30,  1.91s/it]labeled_segments:  70%|███████   | 35/50 [01:05<00:28,  1.92s/it]labeled_segments:  72%|███████▏  | 36/50 [01:07<00:27,  1.95s/it]labeled_segments:  74%|███████▍  | 37/50 [01:09<00:25,  1.94s/it]labeled_segments:  76%|███████▌  | 38/50 [01:11<00:23,  1.93s/it]labeled_segments:  78%|███████▊  | 39/50 [01:13<00:21,  1.92s/it]labeled_segments:  80%|████████  | 40/50 [01:15<00:19,  1.92s/it]labeled_segments:  82%|████████▏ | 41/50 [01:17<00:17,  1.92s/it]labeled_segments:  84%|████████▍ | 42/50 [01:19<00:15,  1.92s/it]labeled_segments:  86%|████████▌ | 43/50 [01:21<00:13,  1.91s/it]labeled_segments:  88%|████████▊ | 44/50 [01:23<00:11,  1.94s/it]labeled_segments:  90%|█████████ | 45/50 [01:25<00:09,  1.98s/it]labeled_segments:  92%|█████████▏| 46/50 [01:27<00:07,  1.98s/it]labeled_segments:  94%|█████████▍| 47/50 [01:29<00:05,  1.99s/it]labeled_segments:  96%|█████████▌| 48/50 [01:31<00:03,  1.97s/it]labeled_segments:  98%|█████████▊| 49/50 [01:32<00:01,  1.92s/it]labeled_segments: 100%|██████████| 50/50 [01:34<00:00,  1.80s/it]                                                                 
+======================================================================
+AttnTrace — Expanded Dataset (50 malicious scenarios)
+======================================================================
+
+── Overall by Context Format ──
+Format                    Top-1    Top-2    Top-3      MRR     AvgGap      N
+------------------------------------------------------------------------
+observations_only         80.0%    82.0%   100.0%    0.870    -0.0003     50
+labeled_segments          80.0%    80.0%   100.0%    0.867    -0.0003     50
+
+── Top-1 by Attack Type × Format ──
+Attack Type                   observations_onl  labeled_segments
+----------------------------------------------------------------
+Direct Execution                           N/A               N/A
+Parameterized Execution                    N/A               N/A
+Conditional Execution             100.0% (n=1)      100.0% (n=1)
+Functional Execution                       N/A               N/A
+Transfer Execution                         N/A               N/A
+
+── Position Bias: Top-1 by Attack Observation Index (labeled_segments) ──
+Atk obs idx       Top-1        MRR        N
+------------------------------------------
+0                100.0%      1.000       40
+2                  0.0%      0.333       10
+
+── Top-1 by Step Count (labeled_segments) ──
+N steps           Top-1        MRR        N
+------------------------------------------
+2                100.0%      1.000       35
+3                100.0%      1.000        5
+4                  0.0%      0.333       10
+
+── Top-1 / MRR by Urgency Level (labeled_segments) ──
+Urgency                   Top-1        MRR        N
+--------------------------------------------------
+high                      92.3%      0.949       13
+low                       75.0%      0.833       16
+medium                    75.0%      0.833       20
+seed                     100.0%      1.000        1
+
+── Top-1 / MRR by Reference Style (labeled_segments) ──
+Reference Style                     Top-1        MRR        N
+------------------------------------------------------------
+casual_inline_note                  83.3%      0.889        6
+dated_memo                          90.9%      0.939       11
+formal_policy_ref                   90.9%      0.939       11
+seed                               100.0%      1.000        1
+supervisor_approval                100.0%      1.000        5
+system_alert                        50.0%      0.667        6
+technical_amendment                 60.0%      0.733       10
+
+── Interpretation (labeled_segments) ──
+MRR: 0.867
+  MRR=1.0 -> always ranks attack observation #1 (perfect)
+  MRR=0.5 -> attack observation ranked #2 on average
+  MRR=0.33 -> attack observation ranked #3 on average
+  -> AttnTrace successfully traces back to the poisoned observation
+
+Results saved to: ./result/agentic_pi_attntrace/qwen2.5-7b-expanded-sample50-seed0.json

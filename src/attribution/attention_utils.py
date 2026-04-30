@@ -102,7 +102,12 @@ def get_layer_attention_weights(
         else:
             position_embeddings = model.model.rotary_emb(hidden_states, position_ids)
     else:
-        position_embeddings = model.model.rotary_emb(hidden_states, position_ids)
+        if hasattr(model.model, "rotary_emb"):
+            position_embeddings = model.model.rotary_emb(hidden_states, position_ids)
+        else:
+            # transformers >= 4.44: rotary_emb moved to each layer's self_attn
+            # new API expects (x, seq_len) where seq_len is a plain int
+            position_embeddings = self_attn.rotary_emb(hidden_states, seq_len=hidden_states.shape[1])
 
     cos, sin = position_embeddings
 
@@ -115,7 +120,7 @@ def get_layer_attention_weights(
     #print("D2", key_states.device)
    # print("D3", cos.device)
     #print("D4", sin.device)
-    query_states, key_states = apply_rotary_pos_emb(query_states, key_states, cos, sin)
+    query_states, key_states = apply_rotary_pos_emb(query_states, key_states, cos, sin, position_ids)
     key_states = repeat_kv(key_states, self_attn.num_key_value_groups)
 
     causal_mask = attention_mask[:, :, :, : key_states.shape[-2]]
