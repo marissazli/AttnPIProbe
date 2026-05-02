@@ -295,7 +295,7 @@ def plot_layer_emergence_cv(all_hidden, observations, layer_indices, output_path
     ax.set_ylim(0.3, 1.05)
     ax.grid(True, alpha=0.3)
     plt.tight_layout()
-    plt.savefig(output_path, dpi=150, bbox_inches="tight")
+    plt.savefig(output_path, dpi=300, bbox_inches="tight")
     plt.close()
     print("Saved: {}".format(output_path))
     return accs_all_mean, accs_all_std
@@ -355,7 +355,7 @@ def plot_pca_best_layer(all_hidden, observations, layer_indices, output_path, mo
         ax.tick_params(labelsize=7)
 
     plt.tight_layout()
-    plt.savefig(output_path, dpi=150, bbox_inches="tight")
+    plt.savefig(output_path, dpi=300, bbox_inches="tight")
     plt.close()
     print("Saved: {}".format(output_path))
     return best_layer, best_acc
@@ -408,7 +408,7 @@ def plot_probe_transfer(all_hidden, observations, layer_indices, output_path, mo
                     ha="center", va="center", fontsize=9, fontweight="bold",
                     color="white" if transfer_matrix[i, k] < 0.7 else "black")
     plt.tight_layout()
-    plt.savefig(output_path, dpi=150, bbox_inches="tight")
+    plt.savefig(output_path, dpi=300, bbox_inches="tight")
     plt.close()
     print("Saved: {}".format(output_path))
     return transfer_matrix, unique_types
@@ -434,7 +434,7 @@ def plot_permutation_test(perm_accs, observed_acc, p_value, output_path, model_n
     ax.legend(fontsize=9)
     ax.grid(True, alpha=0.3)
     plt.tight_layout()
-    plt.savefig(output_path, dpi=150, bbox_inches="tight")
+    plt.savefig(output_path, dpi=300, bbox_inches="tight")
     plt.close()
     print("Saved: {}".format(output_path))
 
@@ -486,14 +486,14 @@ def main(args):
     print("\nGenerating layer emergence plot (CV)...")
     accs_mean, accs_std = plot_layer_emergence_cv(
         all_hidden, observations, layer_indices,
-        os.path.join(args.output_dir, "fig_layer_emergence_cv_{}.png".format(args.model_name)),
+        os.path.join(args.output_dir, "fig_layer_emergence_cv_{}.pdf".format(args.model_name)),
         args.model_name)
 
     # ── PCA at best layer ────────────────────────────────────────────────────
     print("\nGenerating PCA per attack type...")
     best_layer, best_cv_acc = plot_pca_best_layer(
         all_hidden, observations, layer_indices,
-        os.path.join(args.output_dir, "fig_pca_per_type_expanded_{}.png".format(args.model_name)),
+        os.path.join(args.output_dir, "fig_pca_per_type_expanded_{}.pdf".format(args.model_name)),
         args.model_name)
     print("  Best layer: {}, CV accuracy: {:.1%}".format(best_layer, best_cv_acc))
 
@@ -501,7 +501,7 @@ def main(args):
     print("\nGenerating probe transfer matrix...")
     transfer_matrix, unique_types = plot_probe_transfer(
         all_hidden, observations, layer_indices,
-        os.path.join(args.output_dir, "fig_probe_transfer_expanded_{}.png".format(args.model_name)),
+        os.path.join(args.output_dir, "fig_probe_transfer_expanded_{}.pdf".format(args.model_name)),
         args.model_name)
 
     # ── Permutation test at best layer ───────────────────────────────────────
@@ -515,7 +515,7 @@ def main(args):
 
     plot_permutation_test(
         perm_accs, observed_acc, p_value,
-        os.path.join(args.output_dir, "fig_permutation_test_{}.png".format(args.model_name)),
+        os.path.join(args.output_dir, "fig_permutation_test_{}.pdf".format(args.model_name)),
         args.model_name)
 
     # ── Per-layer CV accuracy summary ────────────────────────────────────────
