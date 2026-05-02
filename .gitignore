@@ -1,4 +1,6 @@
 .venv
+.env
+phase2_results_expanded/qwen2.5-7b-expanded-n3360-hidden.npz
 /model_configs
 **/.DS_Store
 **/__pycache__/

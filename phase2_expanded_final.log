@@ -1,0 +1,33 @@
+/u/marissa/attentionPI/.venv/lib/python3.10/site-packages/torch/cuda/__init__.py:58: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Loading observations from ./variations/variants_master.json...
+Loaded 3360 observations (1680 mal + 1680 ben)
+Loading cached hidden states from ./phase2_results_expanded/qwen2.5-7b-expanded-n3360-hidden.npz...
+Loaded: (3360, 8, 3584) shape
+
+Generating layer emergence plot (CV)...
+  Computing CV probe accuracy per layer...
+Layers:   0%|          | 0/8 [00:00<?, ?it/s]Layers:  12%|█▎        | 1/8 [00:10<01:13, 10.53s/it]Layers:  25%|██▌       | 2/8 [00:26<01:20, 13.47s/it]Layers:  38%|███▊      | 3/8 [00:38<01:05, 13.03s/it]Layers:  50%|█████     | 4/8 [00:51<00:52, 13.18s/it]Layers:  62%|██████▎   | 5/8 [01:03<00:37, 12.52s/it]Layers:  75%|███████▌  | 6/8 [01:13<00:23, 11.69s/it]Layers:  88%|████████▊ | 7/8 [01:22<00:10, 10.95s/it]Layers: 100%|██████████| 8/8 [01:35<00:00, 11.40s/it]Layers: 100%|██████████| 8/8 [01:35<00:00, 11.90s/it]
+Saved: ./phase2_results_expanded/fig_layer_emergence_cv_qwen2.5-7b.png
+
+Generating PCA per attack type...
+Saved: ./phase2_results_expanded/fig_pca_per_type_expanded_qwen2.5-7b.png
+  Best layer: 20, CV accuracy: 99.6%
+
+Generating probe transfer matrix...
+Saved: ./phase2_results_expanded/fig_probe_transfer_expanded_qwen2.5-7b.png
+
+Running permutation test (50 permutations)...
+  Observed CV acc: 99.6%, p = 0.0000
+Saved: ./phase2_results_expanded/fig_permutation_test_qwen2.5-7b.png
+
+============================================================
+Phase 2 Expanded — Summary
+============================================================
+n = 3360 (1680 mal + 1680 ben)
+Best layer: 20 | CV accuracy: 99.6%
+Permutation test: p = 0.0000 (SIGNIFICANT)
+OOD transfer: mean=78.7% range=[57.1%, 95.5%]
+
+All outputs in: ./phase2_results_expanded/
+Summary saved: ./phase2_results_expanded/summary_expanded_qwen2.5-7b.json
