@@ -20,7 +20,6 @@ class Llama(Model):
         self.model = AutoModelForCausalLM.from_pretrained(
             self.name,
             torch_dtype=torch.bfloat16,
-            attn_implementation="flash_attention_2",
             device_map=device,
             use_auth_token=hf_token
         )
