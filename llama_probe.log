@@ -1,0 +1,394 @@
+Loading hidden states from ./phase2_results_llama/llama3.1-8b-expanded-n3360-hidden.npz...
+Hidden states: (3360, 9, 4096) | layers: [0, 4, 8, 12, 16, 20, 24, 28, 32]
+Loading scenario metadata from ./variations/variants_master.json...
+Seeds: 210 | Variants: 3150 | Total: 3360
+Train: 210 | Test: 3150
+Train label balance: 50.0% positive
+Test label balance:  50.0% positive
+
+Training probe at layer 0...
+
+=================================================================
+Probe Detector | Layer 0 | Split: seed->variant (train=seeds, test=variants) | train=210 test=3150
+=================================================================
+
+── Overall ──
+  TPR:      4.9%  (77/1575)
+  FPR:      3.2%  (51/1575)
+  Accuracy: 50.8%
+  ROC AUC:  0.5521
+
+  [Baseline] AttentionTracker full_context: TPR=100.0% FPR=100.0%
+  [Baseline] AttnTrace Top-1 (labeled_segments): 79.0% (position bias)
+
+── TPR / FPR by Attack Type ──
+Attack Type                       TPR      FPR      AUC      N
+--------------------------------------------------------------
+Direct Execution                 3.8%     0.0%   0.5234    630
+Parameterized Execution          4.8%     4.4%   0.5241    630
+Conditional Execution            0.0%     1.9%   0.7401    630
+Functional Execution             6.0%     0.0%   0.4847    630
+Transfer Execution               9.8%     9.8%   0.4985    630
+
+── TPR / FPR by Urgency ──
+Urgency                   TPR      FPR      N
+--------------------------------------------
+high                     5.6%     2.9%   1106
+low                      4.2%     3.2%    996
+medium                   4.8%     3.6%   1048
+
+── TPR / FPR by Reference Style ──
+Reference Style                     TPR      FPR      N
+------------------------------------------------------
+casual_inline_note                 7.7%     2.1%    468
+dated_memo                         5.4%     2.9%    626
+formal_policy_ref                  3.9%     3.1%    712
+supervisor_approval                5.0%     4.2%    240
+system_alert                       5.1%     1.9%    514
+technical_amendment                3.0%     5.4%    590
+
+Training probe at layer 4...
+
+=================================================================
+Probe Detector | Layer 4 | Split: seed->variant (train=seeds, test=variants) | train=210 test=3150
+=================================================================
+
+── Overall ──
+  TPR:      91.0%  (1434/1575)
+  FPR:      45.2%  (712/1575)
+  Accuracy: 72.9%
+  ROC AUC:  0.7742
+
+  [Baseline] AttentionTracker full_context: TPR=100.0% FPR=100.0%
+  [Baseline] AttnTrace Top-1 (labeled_segments): 79.0% (position bias)
+
+── TPR / FPR by Attack Type ──
+Attack Type                       TPR      FPR      AUC      N
+--------------------------------------------------------------
+Direct Execution                90.8%    54.9%   0.7182    630
+Parameterized Execution         98.1%    30.8%   0.8362    630
+Conditional Execution           88.6%    73.7%   0.7296    630
+Functional Execution            87.0%    42.5%   0.7331    630
+Transfer Execution              90.8%    24.1%   0.9001    630
+
+── TPR / FPR by Urgency ──
+Urgency                   TPR      FPR      N
+--------------------------------------------
+high                    90.6%    43.8%   1106
+low                     91.4%    46.2%    996
+medium                  91.2%    45.8%   1048
+
+── TPR / FPR by Reference Style ──
+Reference Style                     TPR      FPR      N
+------------------------------------------------------
+casual_inline_note                95.3%    50.8%    468
+dated_memo                        86.9%    44.4%    626
+formal_policy_ref                 90.2%    44.4%    712
+supervisor_approval               90.8%    34.2%    240
+system_alert                      94.5%    46.3%    514
+technical_amendment               90.2%    46.1%    590
+
+Training probe at layer 8...
+
+=================================================================
+Probe Detector | Layer 8 | Split: seed->variant (train=seeds, test=variants) | train=210 test=3150
+=================================================================
+
+── Overall ──
+  TPR:      93.0%  (1465/1575)
+  FPR:      38.5%  (606/1575)
+  Accuracy: 77.3%
+  ROC AUC:  0.8510
+
+  [Baseline] AttentionTracker full_context: TPR=100.0% FPR=100.0%
+  [Baseline] AttnTrace Top-1 (labeled_segments): 79.0% (position bias)
+
+── TPR / FPR by Attack Type ──
+Attack Type                       TPR      FPR      AUC      N
+--------------------------------------------------------------
+Direct Execution                94.9%    55.2%   0.7724    630
+Parameterized Execution         94.9%    29.2%   0.8689    630
+Conditional Execution           87.9%    47.6%   0.8021    630
+Functional Execution            92.1%    27.0%   0.9048    630
+Transfer Execution              95.2%    33.3%   0.9150    630
+
+── TPR / FPR by Urgency ──
+Urgency                   TPR      FPR      N
+--------------------------------------------
+high                    93.5%    37.4%   1106
+low                     91.6%    39.8%    996
+medium                  93.9%    38.4%   1048
+
+── TPR / FPR by Reference Style ──
+Reference Style                     TPR      FPR      N
+------------------------------------------------------
+casual_inline_note                97.4%    44.0%    468
+dated_memo                        90.1%    36.4%    626
+formal_policy_ref                 90.5%    36.8%    712
+supervisor_approval               90.0%    29.2%    240
+system_alert                      95.7%    42.0%    514
+technical_amendment               94.6%    39.0%    590
+
+Training probe at layer 12...
+
+=================================================================
+Probe Detector | Layer 12 | Split: seed->variant (train=seeds, test=variants) | train=210 test=3150
+=================================================================
+
+── Overall ──
+  TPR:      89.3%  (1406/1575)
+  FPR:      44.0%  (693/1575)
+  Accuracy: 72.6%
+  ROC AUC:  0.8044
+
+  [Baseline] AttentionTracker full_context: TPR=100.0% FPR=100.0%
+  [Baseline] AttnTrace Top-1 (labeled_segments): 79.0% (position bias)
+
+── TPR / FPR by Attack Type ──
+Attack Type                       TPR      FPR      AUC      N
+--------------------------------------------------------------
+Direct Execution                91.4%    54.3%   0.6839    630
+Parameterized Execution         89.5%    38.4%   0.8776    630
+Conditional Execution           83.2%    59.7%   0.6688    630
+Functional Execution            87.9%    37.1%   0.8300    630
+Transfer Execution              94.3%    30.5%   0.9256    630
+
+── TPR / FPR by Urgency ──
+Urgency                   TPR      FPR      N
+--------------------------------------------
+high                    88.8%    43.2%   1106
+low                     89.0%    44.4%    996
+medium                  90.1%    44.5%   1048
+
+── TPR / FPR by Reference Style ──
+Reference Style                     TPR      FPR      N
+------------------------------------------------------
+casual_inline_note                97.4%    49.1%    468
+dated_memo                        82.4%    44.4%    626
+formal_policy_ref                 85.4%    40.7%    712
+supervisor_approval               92.5%    29.2%    240
+system_alert                      92.6%    49.0%    514
+technical_amendment               90.5%    45.1%    590
+
+Training probe at layer 16...
+
+=================================================================
+Probe Detector | Layer 16 | Split: seed->variant (train=seeds, test=variants) | train=210 test=3150
+=================================================================
+
+── Overall ──
+  TPR:      88.0%  (1386/1575)
+  FPR:      35.1%  (553/1575)
+  Accuracy: 76.4%
+  ROC AUC:  0.8350
+
+  [Baseline] AttentionTracker full_context: TPR=100.0% FPR=100.0%
+  [Baseline] AttnTrace Top-1 (labeled_segments): 79.0% (position bias)
+
+── TPR / FPR by Attack Type ──
+Attack Type                       TPR      FPR      AUC      N
+--------------------------------------------------------------
+Direct Execution                90.2%    41.9%   0.7599    630
+Parameterized Execution         88.9%    21.9%   0.9291    630
+Conditional Execution           82.5%    55.2%   0.7053    630
+Functional Execution            87.3%    33.0%   0.8046    630
+Transfer Execution              91.1%    23.5%   0.9307    630
+
+── TPR / FPR by Urgency ──
+Urgency                   TPR      FPR      N
+--------------------------------------------
+high                    87.0%    35.3%   1106
+low                     87.2%    35.9%    996
+medium                  89.9%    34.2%   1048
+
+── TPR / FPR by Reference Style ──
+Reference Style                     TPR      FPR      N
+------------------------------------------------------
+casual_inline_note                93.6%    44.4%    468
+dated_memo                        81.2%    34.2%    626
+formal_policy_ref                 84.8%    33.4%    712
+supervisor_approval               85.0%    22.5%    240
+system_alert                      94.2%    36.6%    514
+technical_amendment               90.5%    34.6%    590
+
+Training probe at layer 20...
+
+=================================================================
+Probe Detector | Layer 20 | Split: seed->variant (train=seeds, test=variants) | train=210 test=3150
+=================================================================
+
+── Overall ──
+  TPR:      91.5%  (1441/1575)
+  FPR:      44.3%  (698/1575)
+  Accuracy: 73.6%
+  ROC AUC:  0.7984
+
+  [Baseline] AttentionTracker full_context: TPR=100.0% FPR=100.0%
+  [Baseline] AttnTrace Top-1 (labeled_segments): 79.0% (position bias)
+
+── TPR / FPR by Attack Type ──
+Attack Type                       TPR      FPR      AUC      N
+--------------------------------------------------------------
+Direct Execution                90.8%    44.1%   0.7452    630
+Parameterized Execution         92.7%    33.0%   0.9052    630
+Conditional Execution           85.1%    74.3%   0.5903    630
+Functional Execution            90.5%    39.7%   0.7587    630
+Transfer Execution              98.4%    30.5%   0.9398    630
+
+── TPR / FPR by Urgency ──
+Urgency                   TPR      FPR      N
+--------------------------------------------
+high                    91.7%    42.7%   1106
+low                     90.4%    46.6%    996
+medium                  92.4%    43.9%   1048
+
+── TPR / FPR by Reference Style ──
+Reference Style                     TPR      FPR      N
+------------------------------------------------------
+casual_inline_note                95.7%    52.1%    468
+dated_memo                        86.9%    41.9%    626
+formal_policy_ref                 90.7%    41.9%    712
+supervisor_approval               90.0%    35.0%    240
+system_alert                      93.0%    45.1%    514
+technical_amendment               93.2%    46.8%    590
+
+Training probe at layer 24...
+
+=================================================================
+Probe Detector | Layer 24 | Split: seed->variant (train=seeds, test=variants) | train=210 test=3150
+=================================================================
+
+── Overall ──
+  TPR:      89.7%  (1413/1575)
+  FPR:      39.1%  (616/1575)
+  Accuracy: 75.3%
+  ROC AUC:  0.8309
+
+  [Baseline] AttentionTracker full_context: TPR=100.0% FPR=100.0%
+  [Baseline] AttnTrace Top-1 (labeled_segments): 79.0% (position bias)
+
+── TPR / FPR by Attack Type ──
+Attack Type                       TPR      FPR      AUC      N
+--------------------------------------------------------------
+Direct Execution                88.9%    41.3%   0.8056    630
+Parameterized Execution         94.9%    26.0%   0.9349    630
+Conditional Execution           82.5%    61.9%   0.6266    630
+Functional Execution            85.4%    40.3%   0.7714    630
+Transfer Execution              96.8%    26.0%   0.9456    630
+
+── TPR / FPR by Urgency ──
+Urgency                   TPR      FPR      N
+--------------------------------------------
+high                    89.1%    37.8%   1106
+low                     89.0%    41.0%    996
+medium                  91.0%    38.7%   1048
+
+── TPR / FPR by Reference Style ──
+Reference Style                     TPR      FPR      N
+------------------------------------------------------
+casual_inline_note                95.3%    45.3%    468
+dated_memo                        85.3%    39.6%    626
+formal_policy_ref                 88.5%    37.9%    712
+supervisor_approval               86.7%    28.3%    240
+system_alert                      91.4%    39.3%    514
+technical_amendment               91.2%    39.3%    590
+
+Training probe at layer 28...
+
+=================================================================
+Probe Detector | Layer 28 | Split: seed->variant (train=seeds, test=variants) | train=210 test=3150
+=================================================================
+
+── Overall ──
+  TPR:      91.2%  (1436/1575)
+  FPR:      38.2%  (602/1575)
+  Accuracy: 76.5%
+  ROC AUC:  0.8262
+
+  [Baseline] AttentionTracker full_context: TPR=100.0% FPR=100.0%
+  [Baseline] AttnTrace Top-1 (labeled_segments): 79.0% (position bias)
+
+── TPR / FPR by Attack Type ──
+Attack Type                       TPR      FPR      AUC      N
+--------------------------------------------------------------
+Direct Execution                91.1%    45.7%   0.7711    630
+Parameterized Execution         97.8%    13.3%   0.9469    630
+Conditional Execution           86.4%    73.7%   0.5936    630
+Functional Execution            81.9%    39.7%   0.7577    630
+Transfer Execution              98.7%    18.7%   0.9503    630
+
+── TPR / FPR by Urgency ──
+Urgency                   TPR      FPR      N
+--------------------------------------------
+high                    89.9%    37.6%   1106
+low                     92.0%    39.6%    996
+medium                  91.8%    37.6%   1048
+
+── TPR / FPR by Reference Style ──
+Reference Style                     TPR      FPR      N
+------------------------------------------------------
+casual_inline_note                95.7%    43.2%    468
+dated_memo                        88.8%    37.1%    626
+formal_policy_ref                 89.6%    38.5%    712
+supervisor_approval               91.7%    33.3%    240
+system_alert                      93.0%    36.2%    514
+technical_amendment               90.2%    39.0%    590
+
+Training probe at layer 32...
+
+=================================================================
+Probe Detector | Layer 32 | Split: seed->variant (train=seeds, test=variants) | train=210 test=3150
+=================================================================
+
+── Overall ──
+  TPR:      92.0%  (1449/1575)
+  FPR:      33.8%  (533/1575)
+  Accuracy: 79.1%
+  ROC AUC:  0.8558
+
+  [Baseline] AttentionTracker full_context: TPR=100.0% FPR=100.0%
+  [Baseline] AttnTrace Top-1 (labeled_segments): 79.0% (position bias)
+
+── TPR / FPR by Attack Type ──
+Attack Type                       TPR      FPR      AUC      N
+--------------------------------------------------------------
+Direct Execution                86.7%    38.7%   0.8089    630
+Parameterized Execution         94.0%     7.3%   0.9681    630
+Conditional Execution           88.9%    72.4%   0.6032    630
+Functional Execution            91.8%    37.1%   0.8585    630
+Transfer Execution              98.7%    13.7%   0.9668    630
+
+── TPR / FPR by Urgency ──
+Urgency                   TPR      FPR      N
+--------------------------------------------
+high                    91.5%    33.1%   1106
+low                     91.6%    35.1%    996
+medium                  92.9%    33.4%   1048
+
+── TPR / FPR by Reference Style ──
+Reference Style                     TPR      FPR      N
+------------------------------------------------------
+casual_inline_note                92.7%    39.3%    468
+dated_memo                        90.7%    31.6%    626
+formal_policy_ref                 93.5%    34.5%    712
+supervisor_approval               95.8%    30.0%    240
+system_alert                      88.7%    31.5%    514
+technical_amendment               92.2%    34.6%    590
+
+=================================================================
+Probe Detector — TPR / FPR by Layer | Split: seed->variant (train=seeds, test=variants)
+Baseline: AttentionTracker = 100% TPR / ~100% FPR
+=================================================================
+Layer           TPR        FPR        AUC
+------------------------------------------
+0              4.9%       3.2%     0.5521
+4             91.0%      45.2%     0.7742
+8             93.0%      38.5%     0.8510
+12            89.3%      44.0%     0.8044
+16            88.0%      35.1%     0.8350
+20            91.5%      44.3%     0.7984
+24            89.7%      39.1%     0.8309
+28            91.2%      38.2%     0.8262
+32            92.0%      33.8%     0.8558
+
+Results saved to: ./result/probe_detector_llama/probe_detector_seed_to_variant_all_layers_0.json

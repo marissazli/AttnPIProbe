@@ -1,0 +1,85 @@
+{
+  "model": "llama3.1-8b",
+  "n_observations": 3360,
+  "n_malicious": 1680,
+  "n_benign": 1680,
+  "n_layers_extracted": 9,
+  "layer_stride": 4,
+  "best_layer": 4,
+  "best_cv_accuracy": 0.9943,
+  "permutation_test": {
+    "observed_cv_acc": 0.9943,
+    "p_value": 0.0,
+    "n_permutations": 50,
+    "significant": true
+  },
+  "linear_separability_by_layer": {
+    "0": {
+      "cv_mean": 0.5557,
+      "cv_std": 0.0309
+    },
+    "4": {
+      "cv_mean": 0.9943,
+      "cv_std": 0.0029
+    },
+    "8": {
+      "cv_mean": 0.9935,
+      "cv_std": 0.0043
+    },
+    "12": {
+      "cv_mean": 0.9926,
+      "cv_std": 0.0034
+    },
+    "16": {
+      "cv_mean": 0.9929,
+      "cv_std": 0.0036
+    },
+    "20": {
+      "cv_mean": 0.994,
+      "cv_std": 0.0039
+    },
+    "24": {
+      "cv_mean": 0.9938,
+      "cv_std": 0.0029
+    },
+    "28": {
+      "cv_mean": 0.9923,
+      "cv_std": 0.0024
+    },
+    "32": {
+      "cv_mean": 0.9926,
+      "cv_std": 0.0044
+    }
+  },
+  "probe_transfer_matrix": {
+    "T1_to_T1": 1.0,
+    "T1_to_T2": 0.5238,
+    "T1_to_T3": 0.7753,
+    "T1_to_T4": 0.683,
+    "T1_to_T5": 0.7634,
+    "T2_to_T1": 0.5357,
+    "T2_to_T2": 1.0,
+    "T2_to_T3": 0.6399,
+    "T2_to_T4": 0.5402,
+    "T2_to_T5": 0.8661,
+    "T3_to_T1": 0.6845,
+    "T3_to_T2": 0.5491,
+    "T3_to_T3": 1.0,
+    "T3_to_T4": 0.7411,
+    "T3_to_T5": 0.558,
+    "T4_to_T1": 0.7262,
+    "T4_to_T2": 0.75,
+    "T4_to_T3": 0.7217,
+    "T4_to_T4": 1.0,
+    "T4_to_T5": 0.7723,
+    "T5_to_T1": 0.5387,
+    "T5_to_T2": 0.7693,
+    "T5_to_T3": 0.5833,
+    "T5_to_T4": 0.5476,
+    "T5_to_T5": 1.0
+  },
+  "ood_transfer_mean": 0.6635,
+  "ood_transfer_std": 0.1047,
+  "ood_transfer_min": 0.5238,
+  "ood_transfer_max": 0.8661
+}

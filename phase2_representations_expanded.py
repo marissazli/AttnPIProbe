@@ -121,7 +121,7 @@ def load_observations_from_master(master_path, sample=None, seed=0):
 # Hidden state extraction
 # ---------------------------------------------------------------------------
 
-def extract_hidden_states(observations, model_name, device, layer_stride=4):
+def extract_hidden_states(observations, model_name, device, layer_stride=4, hf_token=None):
     """
     For each observation text, run a forward pass and extract
     residual stream activations at the final token for selected layers.
@@ -129,10 +129,10 @@ def extract_hidden_states(observations, model_name, device, layer_stride=4):
     """
     print("Loading model: {}".format(model_name))
     tokenizer = AutoTokenizer.from_pretrained(
-        model_name, trust_remote_code=True)
+        model_name, token=hf_token, trust_remote_code=True)
     hf_model = AutoModelForCausalLM.from_pretrained(
         model_name, torch_dtype=torch.bfloat16,
-        device_map=device, trust_remote_code=True)
+        device_map=device, token=hf_token, trust_remote_code=True)
     hf_model.eval()
 
     # Determine layer count and select layers
@@ -466,6 +466,20 @@ def main(args):
         args.output_dir,
         "{}-expanded-n{}-hidden.npz".format(args.model_name, n_label))
 
+    # Resolve model path
+    import json as _json2
+    _config_path = "model_configs/{}_config.json".format(args.model_name)
+    if os.path.exists(_config_path):
+        with open(_config_path) as _f2:
+            _cfg2 = _json2.load(_f2)
+        model_name = _cfg2["model_info"]["name"]
+        _api_pos2 = int(_cfg2["api_key_info"]["api_key_use"])
+        _hf_token2 = _cfg2["api_key_info"]["api_keys"][_api_pos2]
+        if _hf_token2 == "YOUR_API_KEY": _hf_token2 = None
+    else:
+        model_name = args.model_name
+        _hf_token2 = None
+
     if os.path.exists(cache_path) and not args.recompute:
         print("Loading cached hidden states from {}...".format(cache_path))
         cached = np.load(cache_path, allow_pickle=True)
@@ -474,7 +488,7 @@ def main(args):
         print("Loaded: {} shape".format(all_hidden.shape))
     else:
         all_hidden, layer_indices = extract_hidden_states(
-            observations, "Qwen/Qwen2.5-7B-Instruct", device, args.layer_stride)
+            observations, model_name, device, args.layer_stride, hf_token=_hf_token2)
         np.savez(cache_path, all_hidden=all_hidden, layer_indices=layer_indices)
         print("Hidden states cached to: {}".format(cache_path))
 
